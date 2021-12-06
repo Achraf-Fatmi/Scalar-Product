@@ -1,0 +1,73 @@
+PROCEDURE P_dot_product(V1,V2: ARRAY_OF INTEGER[];)
+VAR
+    X,k: INTEGER;
+    PS:INTEGER;
+BEGIN
+    FOR k FROM 0 TO V1.length-1 STEP 1  DO
+            X:=V1[k]*V2[k];
+        PS:=PS+X;
+    END_FOR
+    IF (PS=0) THEN
+        write("the two vectors are orthogonal")
+    ELSE
+        write("the two vectors aren't orthogonal")
+    END_IF
+END
+ALGORITHM DotProduct1
+VAR
+M : ARRAY_OF INTEGER[n][n];
+ind1,ind2, i,j:INTEGER;
+V1,V2: ARRAY_OF INTEGER [];
+
+BEGIN
+read(n)
+    FOR i FROM 0 TO n.length-1 STEP 1  DO
+        FOR j FROM 0 TO n.length-1 STEP 1  DO
+            read(M[i][j])
+        END_FOR
+    END_FOR
+    read(ind1,ind2);
+    V1:= M(:,ind1);
+    V2:= M(:,ind2);
+    P_dot_product(V1,V2)   
+END
+
+
+
+
+
+FUNCTION F_dot_product( VAR V1,V2: ARRAY_OF INTEGER[];) : INTEGER
+VAR
+    X,k: INTEGER;
+    result: INTEGER;
+BEGIN
+    FOR k FROM 0 TO V1.length-1 STEP 1  DO
+            X:=V1[k]*V2[k];
+        result:=result+X;
+    END_FOR
+    RETURN (result) ;
+END
+ALGORITHM DotProduct2
+VAR
+M : ARRAY_OF INTEGER[n][n];
+ind1,ind2, i,j:INTEGER;
+V1,V2: ARRAY_OF INTEGER [];
+PS : INTEGER;
+BEGIN
+read(n)
+    FOR i FROM 0 TO n.length-1 STEP 1  DO
+        FOR j FROM 0 TO n.length-1 STEP 1  DO
+            read(M[i][j])
+        END_FOR
+    END_FOR
+    read(ind1,ind2);
+    V1:= M(:,ind1);
+    V2:= M(:,ind2);
+    PS:=F_dot_product(V1,V2)
+    IF (PS=0) THEN
+        write("the two vectors are orthogonal")
+    ELSE
+        write("the two vectors aren't orthogonal")
+    END_IF
+END
+
